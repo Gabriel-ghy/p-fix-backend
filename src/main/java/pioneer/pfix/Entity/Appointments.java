@@ -7,30 +7,48 @@ public class Appointments
     public String phone;
     public String qq;
     public int school;
-    public int fixtime;
+    public int fixtimeid;
     public int problemid;
     public String description;
     public int status;
+    public int fixuserid;
+    public String fixusernote;
 
-    public Appointments(int id, String username, String phone, String qq, int school, int fixtime, int problemid, String description) {
+    public Appointments(int id, String username, String phone, String qq, int school, int fixtimeid, int problemid, String description) {
         this.id = id;
         this.username = username;
         this.phone = phone;
         this.qq = qq;
         this.school = school;
-        this.fixtime = fixtime;
+        this.fixtimeid = fixtimeid;
         this.problemid = problemid;
         this.description = description;
     }
 
-    public Appointments(String username, String phone, String qq, int school, int fixtime, int problemid, String description) {
+    public Appointments(String username, String phone, String qq, int school, int fixtimeid, int problemid, String description) {
         this.username = username;
         this.phone = phone;
         this.qq = qq;
         this.school = school;
-        this.fixtime = fixtime;
+        this.fixtimeid = fixtimeid;
         this.problemid = problemid;
         this.description = description;
+    }
+
+    public int getFixuserid() {
+        return fixuserid;
+    }
+
+    public void setFixuserid(int fixuserid) {
+        this.fixuserid = fixuserid;
+    }
+
+    public String getFixusernote() {
+        return fixusernote;
+    }
+
+    public void setFixusernote(String fixusernote) {
+        this.fixusernote = fixusernote;
     }
 
     public int getStatus() {
@@ -81,12 +99,12 @@ public class Appointments
         this.school = school;
     }
 
-    public int getFixtime() {
-        return fixtime;
+    public int getFixtimeid() {
+        return fixtimeid;
     }
 
-    public void setFixtime(int fixtime) {
-        this.fixtime = fixtime;
+    public void setFixtimeid(int fixtimeid) {
+        this.fixtimeid = fixtimeid;
     }
 
     public int getProblemid() {
