@@ -10,6 +10,7 @@ import pioneer.pfix.Dao.AppointmentsDao;
 import pioneer.pfix.Entity.Appointments;
 import pioneer.pfix.Entity.VO.LoginForm;
 import pioneer.pfix.Entity.VO.LoginParameter;
+import pioneer.pfix.Service.CleanKeyWords;
 import pioneer.pfix.Service.KaptchaConfig;
 
 import javax.imageio.ImageIO;
@@ -37,7 +38,7 @@ public class MainFunction {
     }
     @RequestMapping(value = "/api/Login")
     public LoginParameter Login(@RequestBody JSONObject jsonObject) throws Exception{
-        System.out.println(jsonObject.get("username")+" "+jsonObject.get("password"));
+        JSONObject jsonObject2 = JSONObject.parseObject(CleanKeyWords.cleanSql(jsonObject.toString()));
         return new LoginParameter(1,"1231231");
     }
 
