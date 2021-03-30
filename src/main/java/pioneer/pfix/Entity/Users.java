@@ -6,12 +6,21 @@ public class Users
     public String userid;
     public String username;
     public String password;
-    public String type;
+    public int type;
     public String phone;
     public String qq;
 
-    public Users(int id, String userid, String username, String password, String type, String phone, String qq) {
+    public Users(int id, String userid, String username, String password, int type, String phone, String qq) {
         this.id = id;
+        this.userid = userid;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.phone = phone;
+        this.qq = qq;
+    }
+
+    public Users(String userid, String username, String password, int type, String phone, String qq) {
         this.userid = userid;
         this.username = username;
         this.password = password;
@@ -68,11 +77,11 @@ public class Users
         this.password = password;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 }

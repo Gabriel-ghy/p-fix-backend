@@ -7,11 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pioneer.pfix.Dao.AppointmentsDao;
+import pioneer.pfix.Dao.UsersDao;
 import pioneer.pfix.Entity.Appointments;
-import pioneer.pfix.Entity.VO.LoginForm;
-import pioneer.pfix.Entity.VO.LoginParameter;
+
+import pioneer.pfix.Entity.Users;
 import pioneer.pfix.Service.CleanKeyWords;
-import pioneer.pfix.Service.KaptchaConfig;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -31,15 +31,38 @@ public class MainFunction {
         return "阿巴阿巴";
     }
     @RequestMapping(value = "/api/Appointment",method = RequestMethod.POST)
-    public boolean MakeAppointment(@RequestBody Appointments appointment) throws Exception {
+    public boolean MakeAppointment(@RequestBody JSONObject appointment) throws Exception {
+        appointment = JSONObject.parseObject(CleanKeyWords.cleanSql(appointment.toString()));
+        Appointments appointment2 = JSONObject.toJavaObject(appointment,Appointments.class);
         AppointmentsDao appointmentsDao = new AppointmentsDao();
-        appointmentsDao.MakeAppointment(appointment);
+        appointmentsDao.MakeAppointment(appointment2);
         return true;
     }
     @RequestMapping(value = "/api/Login")
-    public LoginParameter Login(@RequestBody JSONObject jsonObject) throws Exception{
+    public JSONObject Login(@RequestBody JSONObject jsonObject) throws Exception{
         JSONObject jsonObject2 = JSONObject.parseObject(CleanKeyWords.cleanSql(jsonObject.toString()));
-        return new LoginParameter(1,"1231231");
+        UsersDao usersDao = new UsersDao();
+        Users users = usersDao.selectByUserId(jsonObject2.get("userid").toString());
+        JSONObject result = new JSONObject();
+        if(users!=null)
+        {
+            if(jsonObject2.get("password").toString().equals(users.getPassword()))
+            {
+                result.put("code",1);
+                result.put("token","1231231");
+            }
+            else
+            {
+                result.put("code",0);
+                result.put("msg","wrong info!");
+            }
+        }
+        else
+        {
+            result.put("code",0);
+            result.put("msg","wrong info!");
+        }
+        return result;
     }
 
 

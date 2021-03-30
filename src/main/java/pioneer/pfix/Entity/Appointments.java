@@ -3,36 +3,51 @@ package pioneer.pfix.Entity;
 public class Appointments
 {
     public int id;
+    public String name;
     public String username;
     public String phone;
     public String qq;
-    public int school;
+    public int schoolid;
     public int fixtimeid;
+    public String model;
     public int problemid;
     public String description;
     public int status;
     public int fixuserid;
     public String fixusernote;
+    public String fixtime;
 
-    public Appointments(int id, String username, String phone, String qq, int school, int fixtimeid, int problemid, String description) {
+    public Appointments() {
+    }
+
+    public Appointments(int id, String name, String phone, String qq, int schoolid, int fixtimeid, int problemid, String description) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.phone = phone;
         this.qq = qq;
-        this.school = school;
+        this.schoolid = schoolid;
         this.fixtimeid = fixtimeid;
         this.problemid = problemid;
         this.description = description;
     }
 
-    public Appointments(String username, String phone, String qq, int school, int fixtimeid, int problemid, String description) {
-        this.username = username;
+    public Appointments(String name, String phone, String qq, int school, int fixtimeid, String model, int problemid, String description) {
+        this.name = name;
         this.phone = phone;
         this.qq = qq;
-        this.school = school;
+        this.schoolid = school;
         this.fixtimeid = fixtimeid;
+        this.model = model;
         this.problemid = problemid;
         this.description = description;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getFixuserid() {
@@ -59,6 +74,22 @@ public class Appointments
         this.status = status;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getFixtime() {
+        return fixtime;
+    }
+
+    public void setFixtime(String fixtime) {
+        this.fixtime = fixtime;
+    }
+
     public int getId() {
         return id;
     }
@@ -67,12 +98,12 @@ public class Appointments
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -91,12 +122,12 @@ public class Appointments
         this.qq = qq;
     }
 
-    public int getSchool() {
-        return school;
+    public int getSchoolid() {
+        return schoolid;
     }
 
-    public void setSchool(int school) {
-        this.school = school;
+    public void setSchoolid(int schoolid) {
+        this.schoolid = schoolid;
     }
 
     public int getFixtimeid() {
