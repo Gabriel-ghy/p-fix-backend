@@ -10,8 +10,8 @@ public class BaseDao {
     {
         if(conn==null)
         {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://neuznyx.cn:3306/p-fix?characterEncoding=utf-8&useSSL=false", "root", "1023464930");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/pfix?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC", "root", "1023464930");
         }
         return conn;
     }
