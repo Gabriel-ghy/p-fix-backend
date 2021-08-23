@@ -16,7 +16,6 @@ public class FixtimesDao extends BaseDao{
         Connection conn = getConn();
         String sql = "select * from fixtimes;";
         PreparedStatement ps = conn.prepareStatement(sql);
-        System.out.println(ps.toString());
         ResultSet rs = ps.executeQuery();
         while (rs.next())
         {
@@ -27,7 +26,6 @@ public class FixtimesDao extends BaseDao{
             int weekdayid = rs.getInt("weekdayid");
             int positionid = rs.getInt("positionid");
             fixtimes = new Fixtimes(id,schoolid,fixtimestring,weekdayid,positionid);
-            System.out.println(fixtimes.id+" "+fixtimes.fixtimestring);
             fixtimesList.add(fixtimes);
         }
         return fixtimesList;
