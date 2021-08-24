@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 @ResponseBody  //表示返回的对象，Spring会自动把该对象进行json转化，最后写入到Response中。
 public class GlobalExceptionHandler {
-    @ExceptionHandler(RuntimeException.class) //表示让Spring捕获到所有抛出的SignException异常，并交由这个被注解的方法处理。
+    @ExceptionHandler(RuntimeException.class) //表示让Spring捕获到所有抛出的 RuntimeException 异常，并交由这个被注解的方法处理。
     @ResponseStatus(HttpStatus.UNAUTHORIZED)  //表示设置状态码。
     JSONObject handleException(){
         JSONObject jsonObject = new JSONObject();

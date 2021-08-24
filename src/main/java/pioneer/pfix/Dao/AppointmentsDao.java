@@ -94,6 +94,21 @@ public class AppointmentsDao extends BaseDao{
             Appointments appointments = new Appointments(id,name,phone,qq,schoolid,fixdate,model,problemid,description,status,appointmenttime);
             appointmentsList.add(appointments);
         }
+        rs.close();
+        preparedStatement.close();
+        closeConn();
         return appointmentsList;
+    }
+
+    public void SetAppointmentStatus(int appointmentid, int status) throws Exception
+    {
+        Connection connection = getConn();
+        String sql = "update appointments set status=? where id=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1,status);
+        ps.setInt(2,appointmentid);
+        ps.executeUpdate();
+        ps.close();
+        closeConn();
     }
 }

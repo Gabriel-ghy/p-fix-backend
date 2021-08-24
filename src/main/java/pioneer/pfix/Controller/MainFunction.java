@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("api")
 public class MainFunction {
     TokenService tokenService = new TokenService();
-    @UserLoginToken
+
     @RequestMapping(value = "/Appointment",method = RequestMethod.POST)
     public boolean MakeAppointment(@RequestBody JSONObject appointment) throws Exception {
         System.out.println(appointment);
@@ -64,7 +64,7 @@ public class MainFunction {
         }
         return result;
     }
-    @UserLoginToken
+
     @RequestMapping("/GetFixTimes")
     public List GetFixTimes() throws Exception {
         FixtimesDao fixtimesDao = new FixtimesDao();
@@ -99,6 +99,8 @@ public class MainFunction {
         Notes notes = new Notes((int)jsonObject.get("appointmentid"),(String)jsonObject.get("fixuserid"),(String) jsonObject.get("note"));
         NotesDao notesDao = new NotesDao();
         notesDao.AddNotes(notes);
+        AppointmentsDao appointmentsDao = new AppointmentsDao();
+        appointmentsDao.SetAppointmentStatus((int)jsonObject.get("appointmentid"),Integer.parseInt((String)jsonObject.get("status")));
     }
 }
 

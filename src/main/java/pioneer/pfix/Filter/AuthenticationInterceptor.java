@@ -39,7 +39,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         //检查有没有需要用户权限的注解
         if (method.isAnnotationPresent(UserLoginToken.class)) {
             UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken.class);
-            // TODO:产生的异常不能统一显示在前端，可能需要统一异常处理
             if (userLoginToken.required()) {
                 // 执行认证
                 if (token == null) {
